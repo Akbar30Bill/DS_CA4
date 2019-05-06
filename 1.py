@@ -59,14 +59,13 @@ class node:
         if not this.rightChild == None:
             return this.rightChild.popMax()
         elif not this.leftChild == None:
-            rtval = this.data
+
             this.parrent.rightChild = this.leftChild
-            del this
-            return rtval
+            this.leftChild.parrent  = this.parrent
+            return this.data
         else:
-            rtval = this.data
-            del this
-            return rtval
+            this.parrent.rightChild = None
+            return this.data
 
 n,time = list(map(int,input().split()))
 lst = list(map(int,input().split()))
