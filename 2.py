@@ -1,7 +1,6 @@
 class room:
     def __init__(this, on):
         this.on = on
-        # this.parrent = None
         this.childs = []
     def report(this):
         rtvl = this.on;
@@ -16,15 +15,11 @@ tedad = int(input())
 parrent_lst = list(map(int, input().split()))
 lst = []
 on_lst = list(map(int, input().split()))
-for i in range(tedad):
-    lst.append(room(on_lst[i]))
+for i in on_lst:
+    lst.append(room(i))
 for i in range(0, tedad-1):
-    lst[parrent_lst[i]].childs.append(lst[i+1])
-for i in lst:
-    print (i.on)
-    for j in i.childs:
-        print(j.on)
-while True:
+    lst[parrent_lst[i]-1].childs.append(lst[i+1])
+for i in range(int(input())):
     cmd = input().split()
-    if cmd[0] == "report":print(lst[int(cmd[1])].report())
-    else:lst[int(cmd[1])].toggle()
+    if cmd[0] == "report":print(lst[int(cmd[1])-1].report())
+    else:lst[int(cmd[1])-1].toggle()
